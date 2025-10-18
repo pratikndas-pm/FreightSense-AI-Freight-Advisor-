@@ -1,0 +1,295 @@
+# 🚢 FreightSense — AI Freight Advisor  
+**Product Requirements Document (PRD)**  
+*Concept, Design & Development by **Pratik Nirupam Das***  
+> *Navigate Trade with Intelligence.*
+
+---
+
+## 🧭 1. Product Overview
+
+FreightSense is a **smart AI Freight Advisor** that helps freight forwarders, brokers, and shippers make faster, data-driven decisions — from quoting to tracking.
+
+It combines **AI models**, **live logistics data**, and **conversational intelligence** to provide predictive insights on rates, ETAs, routes, and leads — all in one unified workspace.
+
+---
+
+## 💡 2. The Problem
+
+Freight operations today are **slow, fragmented, and reactive**.  
+Teams use multiple systems, emails, and spreadsheets to perform simple tasks like:
+- Finding the best freight rate  
+- Comparing transit times  
+- Tracking delayed containers  
+- Identifying promising leads  
+
+This fragmentation leads to **delayed responses**, **inconsistent pricing**, and **poor customer experience**.
+
+---
+
+## 🚀 3. The Solution
+
+FreightSense acts as a **digital co-pilot** for freight teams.  
+It lets users ask questions in plain English and instantly get:
+- Predictive rate recommendations  
+- Optimized routes with CO₂ insights  
+- Live shipment tracking with AI-based ETA  
+- Ranked customer leads by win probability  
+
+By connecting CRMs, TMSs, and APIs, FreightSense turns raw logistics data into actionable intelligence.
+
+---
+
+## 🎯 4. Vision & Objectives
+
+> “To build the operating brain for global freight — where every logistics decision is assisted by AI.”
+
+### Key Objectives
+1. Reduce average quote time from hours → under 60 seconds.  
+2. Improve rate accuracy and quote-to-win ratio.  
+3. Predict ETAs within ±6 hours of actual arrival.  
+4. Automate 30% of repetitive decision workflows.  
+5. Achieve 80% user satisfaction (CSAT).
+
+---
+
+## 👥 5. User Personas
+
+| User | Role | Goal | FreightSense Value |
+|------|------|------|--------------------|
+| **Freight Forwarder** | Pricing/Operations | Generate accurate quotes fast | AI-predicted rates, margin guardrails |
+| **Sales Executive** | Sales / BD | Prioritize best leads | Lead scoring & CRM integration |
+| **Shipment Coordinator** | Customer Ops | Track delays, predict ETAs | Predictive tracking alerts |
+| **Logistics Manager** | Strategy / Decision maker | Improve efficiency & visibility | Unified analytics dashboard |
+
+---
+
+## ⚙️ 6. Product Scope
+
+### In-Scope (MVP + V1)
+- Chat-based AI interface  
+- Predictive quoting, routing, ETA, and lead scoring  
+- Knowledge hub with document search  
+- CRM/TMS integration via API  
+- Feedback & retraining loop  
+
+### Out-of-Scope
+- Payments or invoicing (future phase)  
+- End-customer booking portal  
+
+---
+
+## 🧩 7. Detailed Feature Descriptions
+
+Each feature defines:  
+**User Input → Contextual Data → AI Output → Feedback Mechanism → Quality Evaluation**
+
+---
+
+### 💬 7.1 Conversational Assistant
+
+**Goal:** Simplify interaction through natural language chat.
+
+- **User Input:** “Compare rates for a 40FT from Dubai to Hamburg.”  
+- **Contextual Data:** User profile, recent queries, lane info, preferred carriers.  
+- **AI Output:**  
+  *“Here are the top 3 carrier options. Maersk offers best cost-time balance (ETA 15 days, $2,430).”*  
+- **Feedback:** 👍 / 👎 feedback stored; popular queries become quick actions.  
+- **Quality Evaluation:** Intent accuracy ≥95%, response time <3 s.
+
+---
+
+### 💸 7.2 Smart Quote Engine
+
+**Goal:** Automate freight pricing and ensure profitability.
+
+- **User Input:** `/quote origin=Dubai dest=Hamburg equipment=40FT date=next week`  
+- **Contextual Data:** Historical rates, carrier APIs, fuel index, congestion data, margin rules.  
+- **AI Output:**  
+  *“Predicted base rate: $2,430. Valid 7 days. Profit margin: 22%.”*  
+- **Feedback:** User edits/accepts → system retrains model.  
+- **Quality Evaluation:** ±5 % rate accuracy, quoting time <60 s.
+
+---
+
+### 🗺️ 7.3 Route Planner & Optimizer
+
+**Goal:** Recommend fastest, cheapest, or greenest transport routes.
+
+- **User Input:** “Find fastest route from Shanghai to Rotterdam.”  
+- **Contextual Data:** Port distances, weather, congestion, carrier schedules.  
+- **AI Output:**  
+  *“Sea + rail saves 2 days and reduces CO₂ by 18%.”*  
+- **Feedback:** Chosen route logged; system learns user preferences.  
+- **Quality Evaluation:** Route accuracy ≥ 90%, CO₂ deviation ≤ 10 %.
+
+---
+
+### ⚓ 7.4 Predictive Tracking & ETA
+
+**Goal:** Track shipments live and forecast delivery with AI.
+
+- **User Input:** “Track container ABCD123456.”  
+- **Contextual Data:** Vessel position, speed, port events, weather.  
+- **AI Output:**  
+  *“Container near Jeddah. ETA Hamburg Oct 31 16:00 ± 6 h.”*  
+- **Feedback:** Actual arrival logged for retraining.  
+- **Quality Evaluation:** ETA MAE ≤ 6 h, alert precision ≥ 90 %.
+
+---
+
+### 📈 7.5 Lead Scoring & Sales Advisor
+
+**Goal:** Rank leads by conversion potential.
+
+- **User Input:** “Show my top leads this week.”  
+- **Contextual Data:** CRM activities, engagement, ticket size, region.  
+- **AI Output:**  
+  *“Top leads: Alpha (92/100), BlueLine (86), Nordic (79).”*  
+- **Feedback:** Sales outcome logged for model update.  
+- **Quality Evaluation:** Precision@k ≥ 0.75, uplift ≥ 20 %.
+
+---
+
+### 📚 7.6 Knowledge & Compliance Hub (RAG)
+
+**Goal:** Retrieve freight SOPs, tariffs, and HS codes conversationally.
+
+- **User Input:** “What is the BAF surcharge on Asia–EU trade?”  
+- **Contextual Data:** Indexed PDFs, SOPs, tariff manuals.  
+- **AI Output:**  
+  *“BAF is 8.5 % for Asia–EU. Source: DP World Tariff 2024, Page 7.”*  
+- **Feedback:** User marks helpful/unhelpful; verified weekly.  
+- **Quality Evaluation:** Relevance ≥ 90 %, latency ≤ 2 s.
+
+---
+
+### 🔗 7.7 Integrations & APIs
+
+**Goal:** Connect FreightSense to CRM, TMS, and partner systems.
+
+- **User Input:** API requests (`/quote`, `/lead`, `/track`).  
+- **Contextual Data:** Auth tokens, tenant settings.  
+- **AI Output:** Structured JSON for embedding in external tools.  
+- **Feedback:** Error logs analyzed for improvement.  
+- **Quality Evaluation:** Uptime ≥ 99.9 %, error < 1 %.
+
+---
+
+### 📊 7.8 Analytics Dashboard
+
+**Goal:** Provide managers a live view of performance.
+
+- **User Input:** Filter by lane, mode, customer.  
+- **Contextual Data:** Historical KPIs, user activity, model logs.  
+- **AI Output:**  
+  *“Quote-to-win ↑ 12 %, ETA accuracy 94 %, top lane DXB-HAM.”*  
+- **Feedback:** Admins flag anomalies → triggers data audits.  
+- **Quality Evaluation:** Data accuracy ≥ 95 %, report latency < 2 s.
+
+---
+
+### 🧠 7.9 AI Feedback & Learning Loop
+
+**Goal:** Keep AI models accurate and explainable.
+
+- **User Input:** Thumbs-up/down, corrections, real outcomes.  
+- **Contextual Data:** Feedback logs, retraining samples.  
+- **AI Output:** Adjusted weights and confidence scores.  
+- **Feedback:** Monthly retraining pipeline.  
+- **Quality Evaluation:** Drift < 5 %/month, 100 % traceable decisions.
+
+---
+
+## 🖥️ 8. Frontend Overview
+
+- **Framework:** Next.js / React + TailwindCSS  
+- **UI Elements:** Chat window, KPI cards, Live Map, Lead list  
+- **Modes:** Light/Dark theme, responsive layout  
+- **Behavior:** Real-time chat + shortcut chips + dashboard widgets  
+- **Goal:** One-minute task completion with zero learning curve
+
+---
+
+## ⚙️ 9. Backend Overview
+
+- **Framework:** FastAPI (Python) + Node.js for routing  
+- **Databases:** PostgreSQL (structured), Pinecone (vectors)  
+- **AI Models:** GPT-4o (LLM) | XGBoost/Scikit-Learn (ML)  
+- **Integrations:** Freightos, MarineTraffic, HubSpot, DP World Flow  
+- **Hosting:** Vercel (UI) + Render/Hugging Face Spaces (API)  
+- **Security:** OAuth 2.0, PII masking, audit logs  
+
+---
+
+## 📈 10. Success Metrics
+
+| Area | Metric | Target |
+|------|---------|--------|
+| **Quotes** | Time to quote | < 60 s |
+| | Rate accuracy | ± 5 % |
+| **Operations** | ETA MAE | ≤ 6 h |
+| **Sales** | Lead conversion uplift | + 20 % |
+| **User Experience** | CSAT | ≥ 80 % |
+| **Adoption** | Weekly active users | ≥ 70 % |
+
+---
+
+## 🤖 11. AI Success Criteria
+
+| Metric | Description | Target |
+|---------|--------------|--------|
+| **Precision@k** | Accuracy of top model predictions | ≥ 0.75 |
+| **F1 Score** | Balance between precision & recall | ≥ 0.80 |
+| **Latency** | Response speed | < 3 s |
+| **Explainability** | Prediction with reason / source | 100 % |
+| **Drift** | Accuracy change per month | < 5 % |
+
+---
+
+## 🔄 12. Typical Workflow
+
+1. User asks: *“Quote 40FT Dubai → Hamburg.”*  
+2. LLM detects intent and required data.  
+3. APIs pull rates and schedule data.  
+4. AI models predict price and ETA.  
+5. LLM composes friendly summary.  
+6. User acts (save, send, or edit).  
+7. Feedback logged → improves models.
+
+---
+
+## 🧱 13. Product Roadmap
+
+| Phase | Focus | Timeframe | Deliverable |
+|--------|--------|------------|--------------|
+| **MVP** | Chat + Quote + Route | 0–2 mo | Working prototype |
+| **V1** | ETA + Lead Scoring + Docs | 3–4 mo | 100 users |
+| **V2** | Booking Bot + Audit | 5–6 mo | Paid SaaS rollout |
+| **Enterprise** | Multi-Agent + SLA | 7–9 mo | 3 enterprise clients |
+| **Global Scale** | APIs + Localization | 10 mo + | Partner ecosystem |
+
+---
+
+## 🔗 14. Related Documents
+
+| Document | Description | Link |
+|-----------|--------------|------|
+| 👥 **User Stories** | User flows & acceptance criteria | [/docs/UserStories.md](../docs/UserStories.md) |
+| 🚀 **GTM Canvas** | Marketing, pricing, channels | [/docs/FreightSense-GTM-Canvas.md](../docs/FreightSense-GTM-Canvas.md) |
+| 🧪 **Testing Criteria** | QA & model validation | [/docs/TestingCriteria.md](../docs/TestingCriteria.md) |
+| 🎨 **Frontend Guide** | UI principles & components | [/docs/FrontendGuide.md](../docs/FrontendGuide.md) |
+| 📊 **README** | Brand, KPIs, competitors | [/README.md](../README.md) |
+
+---
+
+### 🧑‍💼 Author
+**Pratik Nirupam Das**  
+Product Marketing & AI Product Manager — DP World / SeaRates  
+[GitHub: pratikndas-pm](https://github.com/pratikndas-pm)  
+
+**Tagline:** *Navigate Trade with Intelligence.*
+
+---
+
+### © 2025 FreightSense™  
+An AI Freight Advisor simplifying global logistics through intelligence, automation & design.
