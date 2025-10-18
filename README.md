@@ -307,6 +307,225 @@ Each feature defines:
 
 | 👥 **User Stories** | User flows & acceptance criteria | [/docs/UserStories.md](../docs/UserStories.md) |
 
+# 👥 FreightSense — AI Freight Advisor  
+**User Stories, Detailed Acceptance Criteria & AI Testing Guidelines**  
+*Concept, Design & Documentation by **Pratik Nirupam Das***  
+> *Navigate Trade with Intelligence.*
+
+---
+
+## 💬 Epic 1 — Conversational Assistant  
+
+### 🧩 Story 1.1 — Natural-Language Freight Advisor  
+
+**As a** freight forwarder or sales executive  
+**I want to** ask logistics-related questions like “Compare rates from Dubai to Hamburg” or “Track container ABCD123456”  
+**So that** I receive accurate, context-aware answers instantly without manual search or spreadsheets.  
+
+#### User Input  
+Plain text or voice query about quoting, routing, tracking or leads.  
+
+#### AI Logic  
+1. Intent detection (quote / route / track / lead).  
+2. Retrieves data from relevant APIs and internal knowledge graph.  
+3. Synthesizes answer with LLM + context memory.  
+4. Returns summary and interactive actions (“Draft Quote”, “View Map”).  
+
+#### Acceptance Criteria (≥150 words, point wise)  
+- System must correctly identify the intent behind at least 95 % of user queries without explicit keyword prompts.  
+- Responses should appear within 3 seconds of input and contain factual data pulled from verifiable sources (e.g., rate API or vessel feed).  
+- Each answer must include a short text summary, structured data table, and optional visual output (map or chart).  
+- Conversation context should persist for minimum three turns allowing follow-up like “Show cheaper carriers” or “Add insurance cost”.  
+- Users can react (👍/👎) and their feedback is stored for model improvement.  
+- The system must log query metadata (intent, latency, feedback) for AI performance tracking.  
+- UI updates (KPI cards, route tiles) should occur without page reload to maintain conversation flow.  
+- The experience should reduce average decision time for users by > 40 % compared to manual lookup.  
+
+#### AI Testing Criteria  
+
+| Metric | Definition | Target |  
+|--------|-------------|--------|  
+| Intent Accuracy | Correct classification of user intent | ≥ 95 % |  
+| Latency | Input to response time | ≤ 3 s |  
+| Context Retention | Consistency across multi-turn dialogue | ≥ 90 % |  
+| Hallucination Rate | Non-factual content | ≤ 2 % |  
+| User Satisfaction | Avg. post-chat rating | ≥ 4.5 / 5 |  
+
+---
+
+## 💸 Epic 2 — Smart Quote Engine  
+
+### 🧩 Story 2.1 — AI-Generated Freight Quote  
+
+**As a** pricing analyst  
+**I want to** receive an automatically calculated quote based on shipment inputs  
+**So that** I can respond to clients faster and improve profit accuracy.  
+
+#### User Input  
+Origin, destination, container type, date.  
+
+#### AI Logic  
+1. Fetch live and historical rates from Freightos and DP World Flow.  
+2. Predict market rate with regression + seasonality model.  
+3. Add BAF/CAF/THC surcharges + currency conversion.  
+4. Validate margin and profitability guardrails.  
+5. Output structured quote summary (JSON + text view).  
+
+#### Acceptance Criteria (≥150 words, point wise)  
+- Quotes must be generated within 60 seconds end-to-end from input submission.  
+- Each quote includes base rate, all surcharges, tax components, margin %, and total landed cost in both USD and local currency.  
+- A confidence range (high, mid, low) is displayed based on data availability and model variance.  
+- If the predicted margin drops below configured threshold (e.g., 10 %), system issues a red warning banner and suggests revised rate.  
+- Users can export the quote (PDF/CSV) or push to CRM with a single click.  
+- Every approved or edited quote is logged with timestamp, approver ID and final rate for auditing.  
+- The system must reduce average manual quote time from 30 minutes to < 1 minute.  
+- Accuracy between predicted and actual accepted rates should remain within ± 5 %.  
+- Each quote record feeds back into training data to improve future predictions.  
+
+#### AI Testing Criteria  
+
+| Metric | Definition | Target |  
+|--------|-------------|--------|  
+| MAPE | Mean absolute percentage error vs actual rate | ≤ 5 % |  
+| Quote Latency | End-to-end generation time | ≤ 60 s |  
+| Margin Compliance | Quotes meeting profit guardrails | 100 % |  
+| Quote-to-Win Lift | Improvement vs manual quotes | ≥ 20 % |  
+| Data Drift | Monthly accuracy variance | ≤ 5 % |  
+
+---
+
+## 🗺️ Epic 3 — Route Optimization & Planner  
+
+### 🧩 Story 3.1 — Multi-Mode Route Recommendation  
+
+**As a** logistics planner  
+**I want to** compare multiple routes (sea, air, rail, combined)  
+**So that** I can choose the most efficient or eco-friendly option for each shipment.  
+
+#### User Input  
+Origin, destination, preferred mode, priority (cost/time/CO₂).  
+
+#### AI Logic  
+1. Collect schedule and congestion feeds.  
+2. Compute ETA, cost and CO₂ for all routes.  
+3. Rank options with multi-objective optimization.  
+4. Return recommendations + map view.  
+
+#### Acceptance Criteria (≥150 words, point wise)  
+- At least three distinct route options should appear for every query unless data is missing.  
+- Each option must display carrier name, transit days, total cost, and CO₂ impact in kg.  
+- User can toggle between “Fastest”, “Cheapest”, and “Greenest” views with instant re-ranking.  
+- A visual map should plot stops and transit path with color-coded ETA zones.  
+- When users change parameters (e.g., delay by 2 days), system should recalculate in < 15 s.  
+- Predicted ETAs must align within ± 6 hours of actual arrival for 80 % of tested routes.  
+- The feature should enable users to simulate cost/CO₂ trade-offs and save scenarios to dashboard.  
+- All data sources used for recommendations must be traceable for audit (transit schedule ID and timestamp).  
+- Route planner should reduce average decision time by > 50 % compared to manual planning.  
+
+#### AI Testing Criteria  
+
+| Metric | Description | Target |  
+|--------|--------------|--------|  
+| Route Accuracy | Predicted optimal route matches actual best | ≥ 90 % |  
+| ETA MAE | Mean absolute error in hours | ≤ 6 h |  
+| CO₂ Deviation | Difference from verified emission data | ≤ 10 % |  
+| Latency | Computation time | ≤ 30 s |  
+| User Adoption | Active route planner usage | ≥ 70 % |  
+
+---
+
+## ⚓ Epic 4 — Predictive Tracking & ETA  
+
+### 🧩 Story 4.1 — Real-Time Shipment Tracking  
+
+**As a** shipment coordinator  
+**I want to** track containers and get predicted ETAs  
+**So that** I can inform customers of delays before they occur.  
+
+#### Acceptance Criteria (≥150 words, point wise)  
+- User can enter container ID or vessel name and view real-time location on map.  
+- System must poll telemetry feeds every 15 minutes and update positions automatically.  
+- Predicted ETA should include a confidence interval (± hours) and a color-coded risk indicator.  
+- If delay > 3 hours is detected, AI sends an alert email and dashboard notification within 5 minutes.  
+- The alert message must state reason (e.g., “Port congestion Jeddah”) and new ETA.  
+- System stores actual arrival vs predicted ETA for model retraining.  
+- Tracking page must load in < 2 s with no manual refresh needed.  
+- Feature availability ≥ 99.5 % uptime.  
+- Users should report ≥ 80 % trust score in ETA accuracy during pilot surveys.  
+
+#### AI Testing Criteria  
+
+| Metric | Definition | Target |  
+|--------|-------------|--------|  
+| ETA MAE | Average error vs actual arrival | ≤ 6 h |  
+| Alert Precision | True delays correctly flagged | ≥ 90 % |  
+| False Positives | Wrong delay alerts | ≤ 10 % |  
+| Update Latency | Feed-to-dashboard delay | ≤ 5 min |  
+
+---
+
+## 📈 Epic 5 — Lead Intelligence & Scoring  
+
+### 🧩 Story 5.1 — Sales Lead Prioritization  
+
+**As a** sales executive  
+**I want to** see which leads are most likely to convert  
+**So that** I focus on high-value opportunities first.  
+
+#### Acceptance Criteria (≥150 words, point wise)  
+- System must analyze CRM data (engagement, quote history, region, value) and assign a lead score 0–100.  
+- Top 10 % leads should be tagged as Hot (red), next 30 % as Warm, rest Cold.  
+- Each lead card shows score, confidence %, and suggested action (call, email, remind).  
+- Scoring must refresh nightly or on-demand trigger.  
+- User can filter by region or lane and export ranked list to CRM.  
+- All lead outcomes (Won/Lost) feed back to training dataset.  
+- Lead scoring model must improve conversion rate ≥ 20 % over baseline in A/B test.  
+- User interface should display trend of lead score changes over time.  
+- Feature accuracy and drift monitored monthly with alert if precision@k drops below 0.7.  
+
+#### AI Testing Criteria  
+
+| Metric | Definition | Target |  
+|--------|-------------|--------|  
+| Precision@k | Accuracy of top k lead predictions | ≥ 0.75 |  
+| F1 Score | Overall classification balance | ≥ 0.80 |  
+| Conversion Uplift | Improvement vs control group | ≥ 20 % |  
+| Model Drift | Performance change per month | ≤ 5 % |  
+
+---
+
+## 📚 Epic 6 — Knowledge & Compliance Hub (RAG)  
+
+### 🧩 Story 6.1 — AI-Based Document Answering  
+
+**As a** documentation officer  
+**I want to** ask questions like “What’s the BAF surcharge for Asia-EU trade?”  
+**So that** I can get accurate answers from company manuals instantly.  
+
+#### Acceptance Criteria (≥150 words, point wise)  
+- Users can upload PDF/DOC/TXT files for indexing; system confirms successful embedding.  
+- When a question is asked, response must include quoted source document name and page number.  
+- Response time ≤ 2 s for indexed docs < 50 MB.  
+- Answer must contain less than 1 % hallucinated or unverifiable content verified via manual review.  
+- Citation link click opens document at referenced section.  
+- UI displays confidence score and rephrase option for clarity.  
+- Users can mark answers as helpful/unhelpful; these labels feed retrieval fine-tuning.  
+- The RAG system should handle > 1,000 documents and maintain query relevance ≥ 90 %.  
+- Compliance queries must show 0 PII exposure or data leak.  
+
+#### AI Testing Criteria  
+
+| Metric | Description | Target |  
+|--------|--------------|--------|  
+| Relevance | Manual judgment score | ≥ 90 % |  
+| Citation Accuracy | Correct source mapping | 100 % |  
+| Latency | Average response time | ≤ 2 s |  
+| Hallucination Rate | Non-factual output | ≤ 1 % |  
+
+---
+
+## 🔗 Epic 7 
+
 
 ---
 
