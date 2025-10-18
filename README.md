@@ -31,6 +31,17 @@ Conceptualized and developed by **Pratik Nirupam Das**, this product unifies pre
 | 📚 **Knowledge Hub (RAG)** | Retrieves tariffs, SOPs, and HS codes conversationally. | LangChain + Vector Search |
 | 🤝 **CRM/TMS Integration** | Syncs quotes, leads, and bookings with business systems. | API Connectors |
 
+
+## 🔗 Related Product Documents
+
+| Document | Description | Link |
+|-----------|--------------|------|
+| 🧩 **Product Requirements Document (PRD)** | Core product goals, scope, user journeys, and KPIs. | [/docs/PRD.md](../docs/PRD.md) |
+| 👥 **User Stories & Acceptance Criteria** | Complete breakdown of user stories, roles, and testing flows. | [/docs/UserStories.md](../docs/UserStories.md) |
+| 🚀 **Go-To-Market (GTM) Canvas** | Strategy for acquisition, pricing, channels, and growth. | [/docs/FreightSense-GTM-Canvas.md](../docs/FreightSense-GTM-Canvas.md) |
+| 🧪 **Testing & Validation Plan** | QA approach, model testing metrics, precision@k and F1 validations. | [/docs/TestingCriteria.md](../docs/TestingCriteria.md) |
+| 🎨 **Frontend Design Guide** | Design principles, components, and UI flow for FreightSense. | [/docs/FrontendGuide.md](../docs/FrontendGuide.md) |
+
 ---
 
 ## 🎯 Key KPIs
