@@ -305,13 +305,8 @@ Each feature defines:
 
 ## 🔗 14. Related Documents
 
-| Document | Description | Link |
-|-----------|--------------|------|
 | 👥 **User Stories** | User flows & acceptance criteria | [/docs/UserStories.md](../docs/UserStories.md) |
-| 🚀 **GTM Canvas** | Marketing, pricing, channels | [/docs/FreightSense-GTM-Canvas.md](../docs/FreightSense-GTM-Canvas.md) |
-| 🧪 **Testing Criteria** | QA & model validation | [/docs/TestingCriteria.md](../docs/TestingCriteria.md) |
-| 🎨 **Frontend Guide** | UI principles & components | [/docs/FrontendGuide.md](../docs/FrontendGuide.md) |
-| 📊 **README** | Brand, KPIs, competitors | [/README.md](../README.md) |
+
 
 ---
 
