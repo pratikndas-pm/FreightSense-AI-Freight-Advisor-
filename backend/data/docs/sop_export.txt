@@ -1,4 +1,0 @@
-SOP: Export Booking
-1) Receive SI
-2) Validate HS code & Incoterms
-3) Confirm cutoff times with carrier
