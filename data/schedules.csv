@@ -1,0 +1,12 @@
+carrier,mode,origin,destination,via,transit_days,cost_usd,co2_kg
+Maersk,SEA,Dubai,Hamburg,Jeddah;Rotterdam,15,2430,980
+Hapag-Lloyd,SEA,Dubai,Hamburg,Valencia,17,2210,890
+DB Schenker,SEA+RAIL,Dubai,Hamburg,Piraeus;Munich,13,2680,820
+Maersk,SEA,Dubai,Rotterdam,Jeddah,16,2350,950
+CMA CGM,SEA,Shanghai,Rotterdam,Tanjung Pelepas,23,2100,1250
+COSCO,SEA,Shanghai,Hamburg,Suez;Algeciras,22,2180,1230
+ONE,SEA,Jebel Ali,Antwerp,Salalah;Jeddah,17,2300,970
+MSC,SEA,Singapore,Valencia,Colombo;Suez,18,2050,1050
+OOCL,SEA,Shenzhen,Los Angeles,Kaohsiung,14,2600,1600
+Evergreen,SEA,Ho Chi Minh City,Long Beach,Manila,15,2520,1580
+HMM,SEA,Busan,Seattle,Yokohama,12,2400,1500

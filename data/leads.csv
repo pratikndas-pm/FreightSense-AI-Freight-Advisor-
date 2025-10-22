@@ -1,0 +1,11 @@
+account,region,ticket_kusd,engagement_score,last_quote_win,industry
+Alpha Logistics,EU,120,0.92,1,Retail
+BlueLine Freight,ME,85,0.81,0,Electronics
+Nordic Trade,EU,60,0.74,0,Automotive
+Pacific Exports,APAC,150,0.78,1,Textiles
+Delta Shipping,NA,40,0.55,0,Chemicals
+Orion Logistics,EU,95,0.69,1,Furniture
+Zen Freight Co.,ME,70,0.58,0,FMCG
+Sahara Movers,ME,55,0.63,0,Industrial
+Baltic Forwarders,EU,45,0.66,0,Paper
+Harborline,NA,110,0.71,1,Pharma
