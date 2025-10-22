@@ -1,7 +1,7 @@
 // app/api/freight/[action]/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 
-const STREAMLIT_BACKEND_URL = process.env.STREAMLIT_BACKEND_URL; // e.g. https://your-streamlit-app.streamlit.app
+const STREAMLIT_BACKEND_URL = process.env.STREAMLIT_BACKEND_URL;
 
 export async function GET(req: NextRequest, { params }: { params: { action: string } }) {
   try {
@@ -12,13 +12,12 @@ export async function GET(req: NextRequest, { params }: { params: { action: stri
     url.searchParams.set('action', action);
     const qp = req.nextUrl.searchParams;
     qp.forEach((v, k) => url.searchParams.set(k, v));
-
     const r = await fetch(url.toString(), { method: 'GET', headers: { 'cache-control': 'no-cache' } });
     const html = await r.text();
     const start = html.indexOf('<!--JSON_START-->');
     const end = html.indexOf('<!--JSON_END-->');
     if (start === -1 || end === -1) {
-      return NextResponse.json({ error: 'Backend JSON markers not found', hint: 'Open the Streamlit URL with ?api=1&action=quote to verify markers exist.' }, { status: 502 });
+      return NextResponse.json({ error: 'Backend JSON markers not found' }, { status: 502 });
     }
     const jsonStr = html.substring(start + '<!--JSON_START-->'.length, end).trim();
     const data = JSON.parse(jsonStr);
