@@ -1,0 +1,1 @@
+// ChatPaneMap.tsx code placeholder for brevity
