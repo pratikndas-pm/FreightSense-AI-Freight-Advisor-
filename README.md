@@ -12,7 +12,7 @@
 Conceptualized and developed by **Pratik Nirupam Das**, this product unifies predictive analytics, conversational AI, and freight domain intelligence into one decision engine — transforming how global logistics teams operate.
 
 ## 🚀 Live Demo  
-🎯 **Try the App:** [FreightSense — AI Freight Advisor (Claude Demo)](https://claude.ai/public/artifacts/34608684-edd8-497d-bf8d-d6cc6b2db2fe)
+🎯 **Try the App:** [FreightSense — AI Freight Advisor (Claude Demo)](https://claude.ai/public/artifacts/a422c366-398b-43e0-bea0-b6bfa53fa6cf)
 
 ---
 
